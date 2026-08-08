@@ -651,6 +651,11 @@ namespace Robust.Shared.Network
             {
                 netConfig.SetMessageTypeEnabled(NetIncomingMessageType.ConnectionApproval, true);
                 netConfig.MaximumConnections = _config.GetEffectiveMaxConnections();
+                netConfig.MaximumIpConnections = _config.GetCVar(CVars.NetMaxIpConnections);
+                netConfig.MaximumRapidConnections = _config.GetCVar(CVars.NetMaxRapidConnections);
+                netConfig.RapidConnectionWindow = _config.GetCVar(CVars.NetRapidConnectionWindow);
+                netConfig.RapidConnectionDecay = _config.GetCVar(CVars.NetRapidConnectionDecay);
+                netConfig.SendConnectionRejectionReasons = _config.GetCVar(CVars.NetSendConnectionRejectionReasons);
             }
             else
             {

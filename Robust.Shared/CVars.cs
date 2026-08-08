@@ -317,6 +317,37 @@ namespace Robust.Shared
             CVarDef.Create("net.handshake_attempts", 5, CVar.ARCHIVE | CVar.CLIENTONLY);
 
         /// <summary>
+        /// The maximum number of concurrent connections allowed per IP address.
+        /// </summary>
+        public static readonly CVarDef<int> NetMaxIpConnections =
+            CVarDef.Create("net.max_ip_connections", 8, CVar.ARCHIVE | CVar.SERVERONLY);
+
+        /// <summary>
+        /// The maximum number of times a single IP address is allowed to try connecting,
+        /// within the window of <see cref="NetRapidConnectionWindow"/>.
+        /// </summary>
+        public static readonly CVarDef<int> NetMaxRapidConnections =
+            CVarDef.Create("net.max_rapid_connections", 3, CVar.ARCHIVE | CVar.SERVERONLY);
+
+        /// <summary>
+        /// How many seconds until the rapid connection count decays for <see cref="NetMaxRapidConnections"/>.
+        /// </summary>
+        public static readonly CVarDef<float> NetRapidConnectionWindow =
+            CVarDef.Create("net.rapid_connection_window", 30.0f, CVar.ARCHIVE | CVar.SERVERONLY);
+
+        /// <summary>
+        /// How many connection attempts are "forgotten" every <see cref="NetRapidConnectionWindow"/> seconds.
+        /// </summary>
+        public static readonly CVarDef<int> NetRapidConnectionDecay =
+            CVarDef.Create("net.rapid_connection_decay", 1, CVar.ARCHIVE | CVar.SERVERONLY);
+
+        /// <summary>
+        /// Whether to send a disconnect reason to clients when a connection limit is hit.
+        /// </summary>
+        public static readonly CVarDef<bool> NetSendConnectionRejectionReasons =
+            CVarDef.Create("net.send_connection_rejection_reasons", true, CVar.ARCHIVE | CVar.SERVERONLY);
+
+        /// <summary>
         /// If true, encrypt connections when possible.
         /// </summary>
         /// <remarks>
